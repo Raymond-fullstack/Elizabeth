@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Use a romantic and elegant font */
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Set up the background image and overlay */
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF8F0;
+            /* Fallback color */
+            position: relative;
+            z-index: 1;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* A beautiful, subtle image of pink tulips */
+            background-image: url('https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1887&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            /* Soft opacity to not overpower the content */
+            z-index: -2;
+        }
+        /* A subtle purple and pink gradient overlay */
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(167, 139, 250, 0.1), rgba(244, 114, 182, 0.1));
+            z-index: -1;
+        }
+        /* A simple heart beat animation */
+        
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .heart {
+            animation: heartbeat 1.5s ease-in-out infinite;
+            color: #E53E3E;
+            /* Red color for the heart */
+        }
+        /* Styles for the new content containers */
+        
+        .content-box {
+            min-height: 80px;
+            /* Ensure container doesn't jump in size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease-in-out;
+        }
+        /* Styling for the image slider */
+        
+        .slider-container {
+            position: relative;
+            max-width: 320px;
+            /* Control slider width */
+            margin: auto;
+        }
+        
+        .slide {
+            display: none;
+            /* Hide all slides by default */
+            background: #fff;
+            padding: 1rem;
+            padding-bottom: 3rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide.active {
+            display: block;
+            /* Show active slide */
+            animation: fadeIn 1.5s;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            color: #333;
+            font-size: 24px;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+        
+        .slide-nav:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        .prev {
+            left: -20px;
+        }
+        
+        .next {
+            right: -20px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 flex items-center justify-center min-h-screen p-4">
+    <!-- Purple/Pink Overlay -->
+    <div class="overlay"></div>
+
+    <main class="w-full max-w-2xl mx-auto bg-white/70 backdrop-blur-lg rounded-2xl shadow-2xl p-6 md:p-10 text-center">
+
+        <!-- ===== HEADER ===== -->
+        <h1 class="title-font text-4xl md:text-6xl text-gray-900">For My Dearest Kusiima Elizabeth</h1>
+        <p class="mt-4 text-lg text-gray-600">Even though we're miles apart, you're always on my mind.</p>
+        <p class="mt-2 text-gray-500">Fuck i'm already regretting this &#128529;</p>
+        <div class="text-5xl my-6 heart">♥</div>
+
+        <!-- ===== IMAGE SLIDER SECTION ===== -->
+        <div class="my-10">
+            <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-6">My Favorite Pictures Of You</h2>
+            <div id="image-slider" class="slider-container">
+                <!-- Slides will be injected here by JavaScript -->
+            </div>
+            <button onclick="changeSlide(-1)" class="slide-nav prev">&#10094;</button>
+            <button onclick="changeSlide(1)" class="slide-nav next">&#10095;</button>
+        </div>
+
+        <!-- ===== REASONS I LOVE YOU SECTION ===== -->
+        <div class="my-10">
+            <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">A Few Reasons Why I Love You</h2>
+            <div class="content-box p-4 bg-rose-50 rounded-lg">
+                <p id="reason-text" class="text-xl md:text-2xl text-rose-800"></p>
+            </div>
+        </div>
+
+        <!-- ===== THINGS I WANT TO DO SECTION ===== -->
+        <div class="my-10">
+            <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">Things I Can't Wait To Do With You</h2>
+            <div class="content-box p-4 bg-purple-50 rounded-lg">
+                <p id="todo-text" class="text-xl md:text-2xl text-purple-800"></p>
+            </div>
+        </div>
+
+        <!-- ===== POEM SECTION ===== -->
+        <div class="my-10">
+            <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">A Little Poem For You</h2>
+            <div class="p-6 bg-white/50 rounded-lg text-left italic text-gray-700">
+                <!-- Add your beautiful poem here -->
+                <p>Your poem starts here...</p>
+                <p class="mt-4">And can have multiple lines...</p>
+                <p class="mt-4">Just for you.</p>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <p class="title-font text-2xl mt-10 text-gray-700">Happy Girlfriend's Day, My Monkey &#128585;.</p>
+        <p class="mt-2 text-gray-600">Counting down the days</p>
+        <p class="mt-1 text-lg font-semibold text-gray-800">Raymond</p>
+
+    </main>
+
+    <script>
+        // --- SLIDER CONFIGURATION ---
+        const sliderImages = [
+            // IMPORTANT: Replace these with images that are meaningful to you!
+            // Maybe pictures of Seoul, or places you talk about visiting.
+            {
+                url: 'images/Pic1.jpeg',
+                caption: 'Had to save this for later &#128514;'
+            }, {
+                url: 'images/Pic2.jpeg',
+                caption: 'This is just cute.'
+            }, {
+                url: 'images/Pic3.jpeg',
+                caption: 'The skyline and the Japanese sea must have been jealous.'
+            }, {
+                url: 'images/Pic4.jpeg',
+                caption: 'I can stare at this forever.'
+            }, {
+                url: 'images/Pic0.jpg',
+                caption: 'Mbu you still swiped. Yeah i love all of them but unfortunately lost most of them. Is this a sign for you to send them when you get a chance?'
+            }
+        ];
+
+        let currentSlide = 0;
+        const slider = document.getElementById('image-slider');
+
+        function renderSlider() {
+            slider.innerHTML = ''; // Clear previous slides
+            sliderImages.forEach((img, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slide ${index === currentSlide ? 'active' : ''}`;
+                slide.innerHTML = `
+                    <img src="${img.url}" alt="${img.caption}" class="w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0E0E0/333333?text=Image+Not+Found';">
+                    <p class="title-font text-center mt-4 text-lg text-gray-700">${img.caption}</p>
+                `;
+                slider.appendChild(slide);
+            });
+        }
+
+        function changeSlide(n) {
+            currentSlide = (currentSlide + n + sliderImages.length) % sliderImages.length;
+            renderSlider();
+        }
+
+        // --- TEXT ROTATOR CONFIGURATION ---
+        const reasons = [
+            "your incredible kindness.",
+            "the way your eyes light up when you smile.",
+            "your contagious laughter.",
+            "how you always know how to make me feel better.",
+            "your passion for the things you love.",
+            "our late-night conversations.",
+            "the way you look at me.",
+            "your strength and resilience.",
+            "making the most ordinary days feel extraordinary.",
+            "why the fuck you put up with me.",
+            "your unwavering support.",
+            "the little things you do every day."
+        ];
+
+        const thingsToDo = [
+            "take a long walk together.",
+            "hold your hand for the first time.",
+            "go on a real date, no screens attached.",
+            "cook a meal together.",
+            "watch a movie without a 3-second delay.",
+            "introduce you to my friends and family.",
+            "simply sit in comfortable silence together.",
+            "travel the world with you."
+        ];
+
+        const reasonTextElement = document.getElementById('reason-text');
+        const todoTextElement = document.getElementById('todo-text');
+
+        function createTextRotator(element, items) {
+            let currentIndex = 0;
+
+            function changeText() {
+                element.style.opacity = 0;
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % items.length;
+                    element.textContent = items[currentIndex];
+                    element.style.opacity = 1;
+                }, 1000);
+            }
+
+            // Initial state
+            if (items.length > 0) {
+                element.textContent = items[0];
+                element.style.opacity = 1;
+            }
+
+            // Start rotator
+            setInterval(changeText, 4000);
+        }
+
+        // --- INITIALIZE EVERYTHING ON LOAD ---
+        window.onload = function() {
+            renderSlider();
+            createTextRotator(reasonTextElement, reasons);
+            createTextRotator(todoTextElement, thingsToDo);
+        }
+    </script>
+
+</body>
+
+</html>
