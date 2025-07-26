@@ -8,6 +8,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        /* Scroll reveal animation */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Music player styles */
+        
+        .music-player {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1rem;
+            width: 100%;
+        }
+        
+        .music-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+        
+        .song-info {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        #youtube-player {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            margin-top: 1rem;
+        }
+        
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
         /* Use a romantic and elegant font */
         
         .title-font {
@@ -227,13 +296,32 @@
     <main class="w-full max-w-md mx-auto bg-white/20 backdrop-blur-sm rounded-3xl shadow-[0_8px_32px_0_rgba(255,182,193,0.37)] border border-white/20 p-4 md:p-8 text-center mb-8">
 
         <!-- ===== HEADER ===== -->
-        <h1 class="title-font text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-700 leading-tight">For My Dearest Kusiima Elizabeth</h1>
-        <p class="mt-4 text-base md:text-lg text-gray-700 font-medium">Even though we're miles apart, you're always on my mind.</p>
-        <p class="mt-2 text-gray-600">Fuck i'm already regretting this &#128529;</p>
-        <div class="text-4xl md:text-5xl my-4 md:my-6 heart">♥</div>
+        <h1 class="title-font text-3xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-700 leading-tight reveal">For My Dearest Kusiima Elizabeth</h1>
+        <p class="mt-4 text-base md:text-lg text-gray-700 font-medium reveal">Even though we're miles apart, you're always on my mind.</p>
+        <p class="mt-2 text-gray-600 reveal">Fuck i'm already regretting this &#128529;</p>
+        <div class="text-4xl md:text-5xl my-4 md:my-6 heart reveal">♥</div>
+
+        <!-- ===== MUSIC PLAYER ===== -->
+        <div class="my-8 reveal">
+            <h2 class="title-font text-2xl md:text-3xl text-gray-900 mb-4">Our Songs ♫</h2>
+            <div class="music-player">
+                <div class="song-info">
+                    <p class="song-title text-lg font-medium text-gray-800">Now Playing:</p>
+                    <p class="song-artist text-sm text-gray-600">Loading playlist...</p>
+                </div>
+                <div class="music-controls">
+                    <button class="play-btn prev-song" onclick="previousVideo()">⏮</button>
+                    <button class="play-btn play-pause" onclick="togglePlayPause()">▶</button>
+                    <button class="play-btn next-song" onclick="nextVideo()">⏭</button>
+                </div>
+                <div class="youtube-container">
+                    <div id="youtube-player"></div>
+                </div>
+            </div>
+        </div>
 
         <!-- ===== IMAGE SLIDER SECTION ===== -->
-        <div class="my-10">
+        <div class="my-10 reveal">
             <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-6">My Favorite Pictures Of You</h2>
             <div id="image-slider" class="slider-container">
                 <!-- Slides will be injected here by JavaScript -->
@@ -246,7 +334,7 @@
         </div>
 
         <!-- ===== REASONS I LOVE YOU SECTION ===== -->
-        <div class="my-10">
+        <div class="my-10 reveal">
             <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">A Few Reasons Why I Love You</h2>
             <div class="content-box p-4 bg-rose-50 rounded-lg">
                 <p id="reason-text" class="text-xl md:text-2xl text-rose-800"></p>
@@ -254,7 +342,7 @@
         </div>
 
         <!-- ===== THINGS I WANT TO DO SECTION ===== -->
-        <div class="my-10">
+        <div class="my-10 reveal">
             <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">Things I Can't Wait To Do With You</h2>
             <div class="content-box p-4 bg-purple-50 rounded-lg">
                 <p id="todo-text" class="text-xl md:text-2xl text-purple-800"></p>
@@ -262,13 +350,12 @@
         </div>
 
         <!-- ===== POEM SECTION ===== -->
-        <div class="my-10">
+        <div class="my-10 reveal">
             <h2 class="title-font text-3xl md:text-4xl text-gray-900 mb-4">A Little Poem For You</h2>
             <div class="p-6 bg-white/50 rounded-lg text-left italic text-gray-700">
-                <!-- Add your beautiful poem here -->
-                <p>Your poem starts here...</p>
-                <p class="mt-4">And can have multiple lines...</p>
-                <p class="mt-4">Just for you.</p>
+                <p>There is no one else in this world who makes me feel the way you do.</p>
+                <p class="mt-4">You lift me up, you bring joy to my life, and you fill my heart with a love that is pure and true.</p>
+                <p class="mt-4">I am grateful for you every single day, and I promise to love you with all that I am for as long as I live.</p>
             </div>
         </div>
 
@@ -380,7 +467,12 @@
             "making the most ordinary days feel extraordinary.",
             "why the fuck you put up with me.",
             "your unwavering support.",
-            "the little things you do every day."
+            "the little things you do every day.",
+            "your bravery.",
+            "your ambition and determination.",
+            "your thoughtful gestures.",
+            "your ability to listen.",
+            "your caring nature."
         ];
 
         const thingsToDo = [
@@ -391,7 +483,8 @@
             "watch a movie without a 3-second delay.",
             "introduce you to my friends and family.",
             "simply sit in comfortable silence together.",
-            "travel the world with you."
+            "travel the world with you.",
+            "to just be in your presence."
         ];
 
         const reasonTextElement = document.getElementById('reason-text');
@@ -419,11 +512,143 @@
             setInterval(changeText, 4000);
         }
 
+        // --- SCROLL REVEAL ---
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // --- YOUTUBE MUSIC PLAYER ---
+        const playlist = [{
+            id: '1DpH-icPpl0',
+            title: 'Young and Beautiful',
+            artist: 'Lana Del Rey'
+        }, {
+            id: 'TBXQu8ORnBQ',
+            title: 'Dangerously',
+            artist: 'Charlie Puth'
+        }, {
+            id: 'uAYG46w1SCA',
+            title: 'Say So',
+            artist: 'Doja Cat'
+        }, {
+            id: 'F1B9Fk_SgI0',
+            title: 'Be Careful',
+            artist: 'Cardi B'
+        }, {
+            id: 'V1Pl8CzNzCw',
+            title: 'lovely',
+            artist: 'Billie Eilish & Khalid'
+        }, {
+            id: '4NRXx6U8ABQ',
+            title: 'die for you',
+            artist: 'The Weeknd'
+        }, {
+            id: '450p7goxZqg',
+            title: 'All Of Me',
+            artist: 'John Legend'
+        }, {
+            id: '2d1wKn-oJnA',
+            title: 'Snooze',
+            artist: 'SZA'
+        }, {
+            id: 'FxIqEW-UqEc',
+            title: 'Love On The Brain',
+            artist: 'Rihanna'
+        }, {
+            id: 'viimfQi_pUw',
+            title: 'Ocean Eyes',
+            artist: 'Billie Eilish'
+        }];
+
+        let player;
+        let currentVideoIndex = 0;
+        const songTitle = document.querySelector('.song-title');
+        const songArtist = document.querySelector('.song-artist');
+        const playPauseBtn = document.querySelector('.play-pause');
+
+        // Load YouTube IFrame API
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Initialize YouTube Player when API is ready
+        window.onYouTubeIframeAPIReady = function() {
+            player = new YT.Player('youtube-player', {
+                height: '100%',
+                width: '100%',
+                videoId: playlist[currentVideoIndex].id,
+                playerVars: {
+                    'playsinline': 1,
+                    'controls': 0,
+                    'modestbranding': 1,
+                    'rel': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            updateSongInfo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                nextVideo();
+            }
+            updatePlayPauseButton(event.data);
+        }
+
+        function updatePlayPauseButton(state) {
+            playPauseBtn.textContent = state === YT.PlayerState.PLAYING ? '⏸' : '▶';
+        }
+
+        function togglePlayPause() {
+            const state = player.getPlayerState();
+            if (state === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        }
+
+        function nextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % playlist.length;
+            player.loadVideoById(playlist[currentVideoIndex].id);
+            updateSongInfo();
+        }
+
+        function previousVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + playlist.length) % playlist.length;
+            player.loadVideoById(playlist[currentVideoIndex].id);
+            updateSongInfo();
+        }
+
+        function updateSongInfo() {
+            const currentSong = playlist[currentVideoIndex];
+            songTitle.textContent = 'Now Playing: ' + currentSong.title;
+            songArtist.textContent = currentSong.artist;
+        }
+
         // --- INITIALIZE EVERYTHING ON LOAD ---
         window.onload = function() {
             renderSlider();
             createTextRotator(reasonTextElement, reasons);
             createTextRotator(todoTextElement, thingsToDo);
+
+            // Initialize scroll reveal
+            revealOnScroll();
+            window.addEventListener('scroll', revealOnScroll);
         }
     </script>
 
