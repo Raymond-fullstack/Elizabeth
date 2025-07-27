@@ -284,7 +284,7 @@ function onPlayerStateChange(event) {
 }
 
 function updatePlayPauseButton(state) {
-    playPauseBtn.textContent = state === YT.PlayerState.PLAYING ? '&#9208;' : '&#9205;';
+    playPauseBtn.textContent = state === YT.PlayerState.PLAYING ? '⏸' : '▶';
 }
 
 function togglePlayPause() {
