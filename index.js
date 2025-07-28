@@ -14,6 +14,15 @@ const sliderImages = [
         url: 'images/Pic4.jpeg',
         caption: 'I can stare at this forever.'
     }, {
+        url: 'images/Pic5.jpeg',
+        caption: 'just stunning.'
+    }, {
+        url: 'images/Pic8.jpeg',
+        caption: '&#128525;'
+    }, {
+        url: 'images/Pic9.jpeg',
+        caption: 'Need i say more?'
+    }, {
         url: 'images/Pic0.jpg',
         caption: 'Mbu you still swiped. Yeah i love all of them but unfortunately lost most of them. Is this a sign for you to send them when you get a chance?'
     }
@@ -36,18 +45,30 @@ function renderDots() {
 }
 
 function renderSlider() {
-    slider.innerHTML = ''; // Clear previous slides
+    slider.innerHTML = '';
+    const isMobile = window.innerWidth <= 768;
     sliderImages.forEach((img, index) => {
         const slide = document.createElement('div');
-        slide.className = `slide ${index === currentSlide ? 'active' : ''}`;
+        let slideClass = 'slide';
+        if (index === currentSlide) {
+            slideClass += ' active';
+        } else if (isMobile && index === (currentSlide - 1 + sliderImages.length) % sliderImages.length) {
+            slideClass += ' prev';
+        }
+        slide.className = slideClass;
         slide.innerHTML = `
-                    <img src="${img.url}" alt="${img.caption}" class="w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0E0E0/333333?text=Image+Not+Found';">
-                    <p class="title-font text-center mt-4 text-lg text-gray-700">${img.caption}</p>
-                `;
+            <img src="${img.url}" alt="${img.caption}" class="w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0E0E0/333333?text=Image+Not+Found';">
+            <p class="title-font text-center mt-4 text-lg text-gray-700">${img.caption}</p>
+        `;
         slider.appendChild(slide);
     });
     renderDots();
 }
+
+// Re-render slider on resize to update transition style
+window.addEventListener('resize', () => {
+    renderSlider();
+});
 
 function goToSlide(index) {
     currentSlide = index;
