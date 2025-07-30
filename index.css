@@ -22,6 +22,14 @@
     border-radius: 12px;
 }
 
+.youtube-container {
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+    aspect-ratio: 16/9;
+    margin-bottom: 1rem;
+}
+
 .progress-container {
     margin: 1rem 0;
 }

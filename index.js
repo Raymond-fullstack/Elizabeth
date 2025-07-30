@@ -207,9 +207,9 @@ const playlist = [{
     title: 'Young and Beautiful',
     artist: 'Lana Del Rey'
 }, {
-    id: 'RDAMVM0QO5_QGS5ds',
+    id: 'OohPKqzNZP0',
     title: 'Essence',
-    artist: 'Wizkid ft. Tems'
+    artist: 'Wizkid ft. Tems & Justin Bieber'
 }, {
     id: 'V1Pl8CzNzCw',
     title: 'Lovely',

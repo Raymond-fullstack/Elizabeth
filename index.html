@@ -26,11 +26,14 @@
         <div class="my-8 reveal">
             <h2 class="title-font text-2xl md:text-3xl text-gray-900 mb-4">Didn't Want the Letter to be Boring Sooo....♫</h2>
             <div class="music-player">
-                <div class="song-info">
+                <div class="youtube-container mb-4">
+                    <div id="youtube-player"></div>
+                </div>
+                <div class="song-info mb-2">
                     <p class="song-title text-lg font-medium text-gray-800">Now Playing:</p>
                     <p class="song-artist text-sm text-gray-600">Loading playlist...</p>
                 </div>
-                <div class="progress-container">
+                <div class="progress-container mb-3">
                     <div class="progress-bar">
                         <div class="progress"></div>
                     </div>
@@ -43,9 +46,6 @@
                     <button class="play-btn prev-song" onclick="previousVideo()">&#9198;</button>
                     <button class="play-btn play-pause" onclick="togglePlayPause()">&#9205;</button>
                     <button class="play-btn next-song" onclick="nextVideo()">&#9197;</button>
-                </div>
-                <div class="youtube-container">
-                    <div id="youtube-player"></div>
                 </div>
             </div>
         </div>
