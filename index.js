@@ -286,9 +286,14 @@ const playlist = [{
 
 let player;
 let currentVideoIndex = 0;
+let progressInterval = null;
 const songTitle = document.querySelector('.song-title');
 const songArtist = document.querySelector('.song-artist');
 const playPauseBtn = document.querySelector('.play-pause');
+const progressBar = document.querySelector('.progress-bar');
+const progressIndicator = document.querySelector('.progress');
+const currentTimeEl = document.querySelector('.current-time');
+const durationEl = document.querySelector('.duration');
 
 // Load YouTube IFrame API
 const tag = document.createElement('script');
@@ -315,13 +320,15 @@ window.onYouTubeIframeAPIReady = function() {
     });
 
     // Set up progress bar interaction
-    const progressBar = document.querySelector('.progress-bar');
     progressBar.addEventListener('click', (e) => {
+        if (!player || !player.getDuration) return;
+
         const progressBarRect = progressBar.getBoundingClientRect();
         const clickPosition = e.clientX - progressBarRect.left;
-        const percentage = (clickPosition / progressBarRect.width) * 100;
-        const seekTime = (player.getDuration() * percentage) / 100;
+        const percentage = (clickPosition / progressBarRect.width);
+        const seekTime = player.getDuration() * percentage;
         player.seekTo(seekTime, true);
+        updateProgress(); // Update immediately for responsive feel
     });
 }
 
@@ -332,9 +339,9 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
         nextVideo();
-        stopProgressUpdate();
     } else if (event.data === YT.PlayerState.PLAYING) {
         startProgressUpdate();
+        updateProgress(); // Update immediately when playing starts
     } else {
         stopProgressUpdate();
     }
@@ -379,24 +386,31 @@ function formatTime(seconds) {
 }
 
 function updateProgress() {
-    if (player && player.getCurrentTime && player.getDuration) {
+    try {
+        if (!player || !player.getCurrentTime || !player.getDuration) return;
+
         const currentTime = player.getCurrentTime();
         const duration = player.getDuration();
+
+        if (isNaN(currentTime) || isNaN(duration)) return;
+
         const progressPercent = (currentTime / duration) * 100;
 
         // Update progress bar
-        document.querySelector('.progress').style.width = `${progressPercent}%`;
+        progressIndicator.style.width = `${progressPercent}%`;
 
         // Update time display
-        document.querySelector('.current-time').textContent = formatTime(currentTime);
-        document.querySelector('.duration').textContent = formatTime(duration);
+        currentTimeEl.textContent = formatTime(currentTime);
+        durationEl.textContent = formatTime(duration);
+    } catch (error) {
+        console.error('Error updating progress:', error);
     }
 }
 
 // Start progress update interval when video starts playing
 function startProgressUpdate() {
     stopProgressUpdate();
-    progressInterval = setInterval(updateProgress, 100);
+    progressInterval = setInterval(updateProgress, 250); // Update every 250ms for smoother progress
 }
 
 // Stop progress update interval
