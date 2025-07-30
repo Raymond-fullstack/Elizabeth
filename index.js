@@ -33,6 +33,23 @@ const slider = document.getElementById('image-slider');
 const dotsNav = document.getElementById('dots-nav');
 let touchStartX = 0;
 let touchEndX = 0;
+let slideInterval = null; // For automatic sliding
+
+// Function to start automatic sliding
+function startAutoSlide() {
+    stopAutoSlide(); // Clear any existing interval
+    slideInterval = setInterval(() => {
+        changeSlide(1);
+    }, 3000); // Change slide every 3 seconds
+}
+
+// Function to stop automatic sliding
+function stopAutoSlide() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+    }
+}
 
 function renderDots() {
     dotsNav.innerHTML = '';
@@ -46,18 +63,17 @@ function renderDots() {
 
 function renderSlider() {
     slider.innerHTML = '';
-    const isMobile = window.innerWidth <= 768;
     sliderImages.forEach((img, index) => {
         const slide = document.createElement('div');
         let slideClass = 'slide';
         if (index === currentSlide) {
             slideClass += ' active';
-        } else if (isMobile && index === (currentSlide - 1 + sliderImages.length) % sliderImages.length) {
+        } else if (index === (currentSlide - 1 + sliderImages.length) % sliderImages.length) {
             slideClass += ' prev';
         }
         slide.className = slideClass;
         slide.innerHTML = `
-            <img src="${img.url}" alt="${img.caption}" class="w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0E0E0/333333?text=Image+Not+Found';">
+            <img src="${img.url}" alt="${img.caption}" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0E0E0/333333?text=Image+Not+Found';">
             <p class="title-font text-center mt-4 text-lg text-gray-700">${img.caption}</p>
         `;
         slider.appendChild(slide);
@@ -73,11 +89,17 @@ window.addEventListener('resize', () => {
 function goToSlide(index) {
     currentSlide = index;
     renderSlider();
+    // Reset auto-slide timer when manually navigating
+    startAutoSlide();
 }
 
 function changeSlide(n) {
     currentSlide = (currentSlide + n + sliderImages.length) % sliderImages.length;
     renderSlider();
+    // Reset auto-slide timer when manually navigating
+    if (n !== 1 || !slideInterval) { // Don't reset if it's an auto-slide
+        startAutoSlide();
+    }
 }
 
 // Touch events for mobile swipe
@@ -291,6 +313,16 @@ window.onYouTubeIframeAPIReady = function() {
             'onStateChange': onPlayerStateChange
         }
     });
+
+    // Set up progress bar interaction
+    const progressBar = document.querySelector('.progress-bar');
+    progressBar.addEventListener('click', (e) => {
+        const progressBarRect = progressBar.getBoundingClientRect();
+        const clickPosition = e.clientX - progressBarRect.left;
+        const percentage = (clickPosition / progressBarRect.width) * 100;
+        const seekTime = (player.getDuration() * percentage) / 100;
+        player.seekTo(seekTime, true);
+    });
 }
 
 function onPlayerReady(event) {
@@ -300,6 +332,11 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
         nextVideo();
+        stopProgressUpdate();
+    } else if (event.data === YT.PlayerState.PLAYING) {
+        startProgressUpdate();
+    } else {
+        stopProgressUpdate();
     }
     updatePlayPauseButton(event.data);
 }
@@ -335,11 +372,49 @@ function updateSongInfo() {
     songArtist.textContent = currentSong.artist;
 }
 
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function updateProgress() {
+    if (player && player.getCurrentTime && player.getDuration) {
+        const currentTime = player.getCurrentTime();
+        const duration = player.getDuration();
+        const progressPercent = (currentTime / duration) * 100;
+
+        // Update progress bar
+        document.querySelector('.progress').style.width = `${progressPercent}%`;
+
+        // Update time display
+        document.querySelector('.current-time').textContent = formatTime(currentTime);
+        document.querySelector('.duration').textContent = formatTime(duration);
+    }
+}
+
+// Start progress update interval when video starts playing
+function startProgressUpdate() {
+    stopProgressUpdate();
+    progressInterval = setInterval(updateProgress, 100);
+}
+
+// Stop progress update interval
+function stopProgressUpdate() {
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
+}
+
 // --- INITIALIZE EVERYTHING ON LOAD ---
 window.onload = function() {
     renderSlider();
     createTextRotator(reasonTextElement, reasons);
     createTextRotator(todoTextElement, thingsToDo);
+
+    // Start automatic sliding
+    startAutoSlide();
 
     // Initialize scroll reveal
     revealOnScroll();
