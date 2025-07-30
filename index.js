@@ -207,6 +207,14 @@ const playlist = [{
     title: 'Young and Beautiful',
     artist: 'Lana Del Rey'
 }, {
+    id: '2bpMSpFTdzM',
+    title: 'Ceilings',
+    artist: 'Lizzy McAlpine'
+}, {
+    id: 'MiAoetOXKcY',
+    title: 'Say yes to heaven',
+    artist: 'Lana Del Rey'
+}, {
     id: 'OohPKqzNZP0',
     title: 'Essence',
     artist: 'Wizkid ft. Tems & Justin Bieber'
@@ -219,41 +227,73 @@ const playlist = [{
     title: 'Say So',
     artist: 'Doja Cat'
 }, {
+    id: 'QZp2biJul1c',
+    title: 'Vegas',
+    artist: 'Doja Cat'
+}, {
     id: 'USb5JBhZed0',
     title: 'Need to Know',
     artist: 'Doja Cat'
 }, {
-    id: 'TBXQu8ORnBQ',
-    title: 'Dangerously',
-    artist: 'Charlie Puth'
+    id: 'o5WIOcPLUU4',
+    title: 'OverCome',
+    artist: 'Skott'
 }, {
-    id: 'QLCpqdqeoII',
-    title: 'die for you',
-    artist: 'The Weeknd'
+    id: '84yTsE4eNYQ',
+    title: 'Kiki Do You Love Me',
+    artist: 'Drake'
 }, {
-    id: '450p7goxZqg',
-    title: 'All Of Me',
-    artist: 'John Legend'
+    id: 'y9qO_xgE34Q',
+    title: 'Wait for you',
+    artist: 'Future ft. Drake & Tems'
 }, {
     id: 'ZqSlV5LmrTg',
     title: 'Snooze',
     artist: 'SZA'
 }, {
-    id: 'FxIqEW-UqEc',
-    title: 'Love On The Brain',
-    artist: 'Rihanna'
+    id: 'esKJ8BbauGk',
+    title: 'Sure Thing',
+    artist: 'Miguel'
 }, {
     id: 'viimfQi_pUw',
     title: 'Ocean Eyes',
     artist: 'Billie Eilish'
 }, {
+    id: 'BY_XwvKogC8',
+    title: 'Chihiro',
+    artist: 'Billie Eilish'
+}, {
+    id: 'VaKzNtwPQxE',
+    title: `Let's fall in love for the night`,
+    artist: 'FINNEAS'
+}, {
     id: 'Pkh8UtuejGw',
     title: 'Senorita',
     artist: 'Shawn Mendes & Camila Cabello'
 }, {
+    id: 'tt2k8PGm-TI',
+    title: 'Dusk Till Dawn',
+    artist: 'Zayn ft. Sia'
+}, {
     id: '5Xtvxn9myus',
     title: 'Trip',
     artist: 'Ella Mai'
+}, {
+    id: '6YNZlXfW6Ho',
+    title: `Boo'd Up`,
+    artist: 'Ella Mai'
+}, {
+    id: 'o5thu6-7y3Q',
+    title: 'Made for Me',
+    artist: 'Muni Long'
+}, {
+    id: '4D89Qr5vH6U',
+    title: 'Favorite Song',
+    artist: 'Toosii'
+}, {
+    id: 'RHUUy3acptk',
+    title: 'At My Worst',
+    artist: 'Pink Sweat$'
 }, {
     id: 'RsELrcVNzG0',
     title: 'Your Song',
@@ -262,6 +302,14 @@ const playlist = [{
     id: 'XVveECQmiAk',
     title: 'Luther',
     artist: 'Kendrick Lamar & SZA'
+}, {
+    id: 'ox7RsX1Ee34',
+    title: 'LOVE',
+    artist: 'Kendrick Lamar'
+}, {
+    id: 'iSgUMPHQEWw',
+    title: 'Pretty Little Fears (Bet she from the westside)',
+    artist: '6LACK ft. J Cole'
 }, {
     id: '5Wiio4KoGe8',
     title: 'What Lovers Do',
@@ -279,9 +327,37 @@ const playlist = [{
     title: 'Bam Bam',
     artist: 'Camila Cabello ft. Ed Sheeran'
 }, {
-    id: 'RDAMVMIdakuJqdm2M',
+    id: 'YpEvcBVBA1o',
     title: 'S.M.K',
     artist: 'Fave'
+}, {
+    id: 'Bx5JZNoz-KY',
+    title: 'Favorite Psycho',
+    artist: 'Qing Madi'
+}, {
+    id: 'Tb4X1BWNO5k',
+    title: 'Mad Over You',
+    artist: 'Runtown'
+}, {
+    id: 'ABy7v4MSKqs',
+    title: 'Fever',
+    artist: 'Wizkid'
+}, {
+    id: 'WH-M6W2778E',
+    title: 'Particula',
+    artist: 'Major Lazer ft. Nasty C, Ice Prince, Patoranking & Jidenna'
+}, {
+    id: 'eVli-tstM5E',
+    title: 'Espresso',
+    artist: 'Sabrina Carpenter'
+}, {
+    id: 'kOkQ4T5WO9E',
+    title: 'This is what you came for',
+    artist: 'Calvin Harris ft. Rihanna'
+}, {
+    id: '2PGa_0A--RI',
+    title: 'Wakikuba (Used to be my favorite UG song)',
+    artist: 'Pia Pounds'
 }];
 
 let player;
