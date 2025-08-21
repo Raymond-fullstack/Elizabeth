@@ -192,7 +192,7 @@ body::before {
     background-image: url('images/tulips (1).jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.2;
+    opacity: 0.5;
     /* Subtle background */
     z-index: -2;
     filter: blur(2px);
