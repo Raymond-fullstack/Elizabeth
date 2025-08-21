@@ -189,10 +189,10 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('images/tulips (3).jpg');
+    background-image: url('images/tulips (1).jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.3;
+    opacity: 0.2;
     /* Subtle background */
     z-index: -2;
     filter: blur(2px);

@@ -22,7 +22,25 @@ const sliderImages = [
     }, {
         url: 'images/Pic9.jpeg',
         caption: 'Need i say more?'
-    }, {
+    },{
+        url: 'images/New (2).jpeg',
+        caption: 'A day at the beach.'
+    },{
+        url: 'images/New (3).jpeg',
+        caption: 'Connecting with nature.'
+    },{
+        url: 'images/New (4).jpeg',
+        caption: 'I love this selfie'
+    },{
+        url: 'images/New (5).jpeg',
+        caption: 'I forgot how much i loved this.'
+    },{
+        url: 'images/New (6).jpeg',
+        caption: ''
+    },{
+        url: 'images/New (7).jpeg',
+        caption: 'Beautiful'
+    },{
         url: 'images/Pic0.jpg',
         caption: 'Mbu you still swiped. Yeah i love all of them but unfortunately lost most of them. Is this a sign for you to send them when you get a chance?'
     }
@@ -343,6 +361,10 @@ const playlist = [{
     title: 'Fever',
     artist: 'Wizkid'
 }, {
+    id: 'R4qud199tQk',
+    title: 'KULOSA',
+    artist: 'Oxlade'
+}, {
     id: 'WH-M6W2778E',
     title: 'Particula',
     artist: 'Major Lazer ft. Nasty C, Ice Prince, Patoranking & Jidenna'
@@ -358,6 +380,10 @@ const playlist = [{
     id: '2PGa_0A--RI',
     title: 'Wakikuba (Used to be my favorite UG song)',
     artist: 'Pia Pounds'
+}, {
+    id: '67MJyqSw6S4',
+    title: 'Sikikukweka (And this one)',
+    artist: 'Daddy Andre'
 }];
 
 let player;
@@ -496,6 +522,66 @@ function stopProgressUpdate() {
         progressInterval = null;
     }
 }
+
+
+const CORRECT_DEPARTURE_DATE = '2024-08-31'; 
+
+function unlockLetter() {
+    const inputDate = document.getElementById('departure-date').value;
+    const letterContent = document.getElementById('letter-content');
+    const unlockButton = document.querySelector('button[onclick="unlockLetter()"]');
+    
+    if (!inputDate) {
+        alert('Please enter a date first.');
+        return;
+    }
+    
+    if (inputDate === CORRECT_DEPARTURE_DATE) {
+        // Correct date - show the letter
+        letterContent.classList.remove('hidden');
+        letterContent.classList.add('animate-fade-in');
+        unlockButton.textContent = 'Letter Unlocked! 💕';
+        unlockButton.classList.add('bg-green-500', 'hover:bg-green-600');
+        unlockButton.classList.remove('from-pink-500', 'to-rose-600', 'hover:from-pink-600', 'hover:to-rose-700');
+        
+        // Add a sweet animation effect
+        letterContent.style.animation = 'fadeInUp 1s ease-out';
+        
+        // Scroll to the letter content
+        setTimeout(() => {
+            letterContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 500);
+        
+    } else {
+        // Wrong date - show a hint
+        alert('That\'s not quite right. Think about when you left the country... 💭');
+        unlockButton.textContent = 'Try Again';
+        unlockButton.classList.add('animate-pulse');
+        setTimeout(() => {
+            unlockButton.classList.remove('animate-pulse');
+        }, 2000);
+    }
+}
+
+// Add CSS animation for the letter reveal
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-fade-in {
+        animation: fadeInUp 1s ease-out;
+    }
+`;
+document.head.appendChild(style);
 
 // --- INITIALIZE EVERYTHING ON LOAD ---
 window.onload = function() {
