@@ -22,25 +22,25 @@ const sliderImages = [
     }, {
         url: 'images/Pic9.jpeg',
         caption: 'Need i say more?'
-    },{
+    }, {
         url: 'images/New (2).jpeg',
         caption: 'A day at the beach.'
-    },{
+    }, {
         url: 'images/New (3).jpeg',
         caption: 'Connecting with nature.'
-    },{
+    }, {
         url: 'images/New (4).jpeg',
         caption: 'I love this selfie'
-    },{
+    }, {
         url: 'images/New (5).jpeg',
         caption: 'I forgot how much i loved this.'
-    },{
+    }, {
         url: 'images/New (6).jpeg',
         caption: ''
-    },{
+    }, {
         url: 'images/New (7).jpeg',
         caption: 'Beautiful'
-    },{
+    }, {
         url: 'images/Pic0.jpg',
         caption: 'Mbu you still swiped. Yeah i love all of them but unfortunately lost most of them. Is this a sign for you to send them when you get a chance?'
     }
@@ -217,174 +217,221 @@ function revealOnScroll() {
 
 // --- YOUTUBE MUSIC PLAYER ---
 const playlist = [{
-    id: '0QO5_QGS5ds',
-    title: 'Agora Hills',
-    artist: 'Doja Cat'
-}, {
-    id: 'mjcX-5lKdeg',
-    title: 'Young and Beautiful',
-    artist: 'Lana Del Rey'
-}, {
-    id: '2bpMSpFTdzM',
-    title: 'Ceilings',
-    artist: 'Lizzy McAlpine'
-}, {
-    id: 'MiAoetOXKcY',
-    title: 'Say yes to heaven',
-    artist: 'Lana Del Rey'
-}, {
-    id: 'OohPKqzNZP0',
-    title: 'Essence',
-    artist: 'Wizkid ft. Tems & Justin Bieber'
-}, {
-    id: 'V1Pl8CzNzCw',
-    title: 'Lovely',
-    artist: 'Billie Eilish & Khalid'
-}, {
-    id: 'uAYG46w1SCA',
-    title: 'Say So',
-    artist: 'Doja Cat'
-}, {
-    id: 'QZp2biJul1c',
-    title: 'Vegas',
-    artist: 'Doja Cat'
-}, {
-    id: 'USb5JBhZed0',
-    title: 'Need to Know',
-    artist: 'Doja Cat'
-}, {
-    id: 'o5WIOcPLUU4',
-    title: 'OverCome',
-    artist: 'Skott'
-}, {
-    id: '84yTsE4eNYQ',
-    title: 'Kiki Do You Love Me',
-    artist: 'Drake'
-}, {
-    id: 'y9qO_xgE34Q',
-    title: 'Wait for you',
-    artist: 'Future ft. Drake & Tems'
-}, {
-    id: 'ZqSlV5LmrTg',
-    title: 'Snooze',
-    artist: 'SZA'
-}, {
-    id: 'esKJ8BbauGk',
-    title: 'Sure Thing',
-    artist: 'Miguel'
-}, {
-    id: 'viimfQi_pUw',
-    title: 'Ocean Eyes',
-    artist: 'Billie Eilish'
-}, {
-    id: 'BY_XwvKogC8',
-    title: 'Chihiro',
-    artist: 'Billie Eilish'
-}, {
-    id: 'VaKzNtwPQxE',
-    title: `Let's fall in love for the night`,
-    artist: 'FINNEAS'
-}, {
-    id: 'Pkh8UtuejGw',
-    title: 'Senorita',
-    artist: 'Shawn Mendes & Camila Cabello'
-}, {
-    id: 'tt2k8PGm-TI',
-    title: 'Dusk Till Dawn',
-    artist: 'Zayn ft. Sia'
-}, {
-    id: '5Xtvxn9myus',
-    title: 'Trip',
-    artist: 'Ella Mai'
-}, {
-    id: '6YNZlXfW6Ho',
-    title: `Boo'd Up`,
-    artist: 'Ella Mai'
-}, {
-    id: 'o5thu6-7y3Q',
-    title: 'Made for Me',
-    artist: 'Muni Long'
-}, {
-    id: '4D89Qr5vH6U',
-    title: 'Favorite Song',
-    artist: 'Toosii'
-}, {
-    id: 'RHUUy3acptk',
-    title: 'At My Worst',
-    artist: 'Pink Sweat$'
-}, {
-    id: 'RsELrcVNzG0',
-    title: 'Your Song',
-    artist: 'Rita Ora'
-}, {
-    id: 'XVveECQmiAk',
-    title: 'Luther',
-    artist: 'Kendrick Lamar & SZA'
-}, {
-    id: 'ox7RsX1Ee34',
-    title: 'LOVE',
-    artist: 'Kendrick Lamar'
-}, {
-    id: 'iSgUMPHQEWw',
-    title: 'Pretty Little Fears (Bet she from the westside)',
-    artist: '6LACK ft. J Cole'
-}, {
-    id: '5Wiio4KoGe8',
-    title: 'What Lovers Do',
-    artist: 'Maroon 5 ft. SZA'
-}, {
-    id: 'zDo0H8Fm7d0',
-    title: 'Meant to Be',
-    artist: 'Bebe Rexha ft. Florida Georgia Line'
-}, {
-    id: 'x3bfa3DZ8JM',
-    title: 'Better',
-    artist: 'Khalid'
-}, {
-    id: '-8VfKZCOo_I',
-    title: 'Bam Bam',
-    artist: 'Camila Cabello ft. Ed Sheeran'
-}, {
-    id: 'YpEvcBVBA1o',
-    title: 'S.M.K',
-    artist: 'Fave'
-}, {
-    id: 'Bx5JZNoz-KY',
-    title: 'Favorite Psycho',
-    artist: 'Qing Madi'
-}, {
-    id: 'Tb4X1BWNO5k',
-    title: 'Mad Over You',
-    artist: 'Runtown'
-}, {
-    id: 'ABy7v4MSKqs',
-    title: 'Fever',
-    artist: 'Wizkid'
-}, {
-    id: 'R4qud199tQk',
-    title: 'KULOSA',
-    artist: 'Oxlade'
-}, {
-    id: 'WH-M6W2778E',
-    title: 'Particula',
-    artist: 'Major Lazer ft. Nasty C, Ice Prince, Patoranking & Jidenna'
-}, {
-    id: 'eVli-tstM5E',
-    title: 'Espresso',
-    artist: 'Sabrina Carpenter'
-}, {
-    id: 'kOkQ4T5WO9E',
-    title: 'This is what you came for',
-    artist: 'Calvin Harris ft. Rihanna'
-}, {
-    id: '2PGa_0A--RI',
-    title: 'Wakikuba (Used to be my favorite UG song)',
-    artist: 'Pia Pounds'
-}, {
-    id: '67MJyqSw6S4',
-    title: 'Sikikukweka (And this one)',
-    artist: 'Daddy Andre'
-}];
+        id: 'HjmBLCbTgDo',
+        title: 'Break My Heart Again',
+        artist: 'FINNEAS'
+
+    }, {
+        id: '0QO5_QGS5ds',
+        title: 'Agora Hills',
+        artist: 'Doja Cat'
+    },
+    {
+        id: 'mjcX-5lKdeg',
+        title: 'Young and Beautiful',
+        artist: 'Lana Del Rey'
+    },
+    {
+        id: '2bpMSpFTdzM',
+        title: 'Ceilings',
+        artist: 'Lizzy McAlpine'
+    },
+    {
+        id: 'MiAoetOXKcY',
+        title: 'Say yes to heaven',
+        artist: 'Lana Del Rey'
+    },
+    {
+        id: 'OohPKqzNZP0',
+        title: 'Essence',
+        artist: 'Wizkid ft. Tems & Justin Bieber'
+    },
+    {
+        id: 'V1Pl8CzNzCw',
+        title: 'Lovely',
+        artist: 'Billie Eilish & Khalid'
+    },
+    {
+        id: 'uAYG46w1SCA',
+        title: 'Say So',
+        artist: 'Doja Cat'
+    },
+    {
+        id: 'QZp2biJul1c',
+        title: 'Vegas',
+        artist: 'Doja Cat'
+    },
+    {
+        id: 'USb5JBhZed0',
+        title: 'Need to Know',
+        artist: 'Doja Cat'
+    },
+    {
+        id: 'o5WIOcPLUU4',
+        title: 'OverCome',
+        artist: 'Skott'
+    },
+    {
+        id: '84yTsE4eNYQ',
+        title: 'Kiki Do You Love Me',
+        artist: 'Drake'
+    },
+    {
+        id: 'y9qO_xgE34Q',
+        title: 'Wait for you',
+        artist: 'Future ft. Drake & Tems'
+    },
+    {
+        id: 'ZqSlV5LmrTg',
+        title: 'Snooze',
+        artist: 'SZA'
+    },
+    {
+        id: 'esKJ8BbauGk',
+        title: 'Sure Thing',
+        artist: 'Miguel'
+    },
+    {
+        id: 'viimfQi_pUw',
+        title: 'Ocean Eyes',
+        artist: 'Billie Eilish'
+    },
+    {
+        id: 'BY_XwvKogC8',
+        title: 'Chihiro',
+        artist: 'Billie Eilish'
+    },
+    {
+        id: 'VaKzNtwPQxE',
+        title: `Let's fall in love for the night`,
+        artist: 'FINNEAS'
+    },
+    {
+        id: 'Pkh8UtuejGw',
+        title: 'Senorita',
+        artist: 'Shawn Mendes & Camila Cabello'
+    },
+    {
+        id: 'tt2k8PGm-TI',
+        title: 'Dusk Till Dawn',
+        artist: 'Zayn ft. Sia'
+    },
+    {
+        id: '5Xtvxn9myus',
+        title: 'Trip',
+        artist: 'Ella Mai'
+    },
+    {
+        id: '6YNZlXfW6Ho',
+        title: `Boo'd Up`,
+        artist: 'Ella Mai'
+    },
+    {
+        id: 'o5thu6-7y3Q',
+        title: 'Made for Me',
+        artist: 'Muni Long'
+    },
+    {
+        id: '4D89Qr5vH6U',
+        title: 'Favorite Song',
+        artist: 'Toosii'
+    },
+    {
+        id: 'RHUUy3acptk',
+        title: 'At My Worst',
+        artist: 'Pink Sweat$'
+    },
+    {
+        id: 'RsELrcVNzG0',
+        title: 'Your Song',
+        artist: 'Rita Ora'
+    },
+    {
+        id: 'XVveECQmiAk',
+        title: 'Luther',
+        artist: 'Kendrick Lamar & SZA'
+    },
+    {
+        id: 'ox7RsX1Ee34',
+        title: 'LOVE',
+        artist: 'Kendrick Lamar'
+    },
+    {
+        id: 'iSgUMPHQEWw',
+        title: 'Pretty Little Fears (Bet she from the westside)',
+        artist: '6LACK ft. J Cole'
+    },
+    {
+        id: '5Wiio4KoGe8',
+        title: 'What Lovers Do',
+        artist: 'Maroon 5 ft. SZA'
+    },
+    {
+        id: 'zDo0H8Fm7d0',
+        title: 'Meant to Be',
+        artist: 'Bebe Rexha ft. Florida Georgia Line'
+    },
+    {
+        id: 'x3bfa3DZ8JM',
+        title: 'Better',
+        artist: 'Khalid'
+    },
+    {
+        id: '-8VfKZCOo_I',
+        title: 'Bam Bam',
+        artist: 'Camila Cabello ft. Ed Sheeran'
+    },
+    {
+        id: 'YpEvcBVBA1o',
+        title: 'S.M.K',
+        artist: 'Fave'
+    },
+    {
+        id: 'Bx5JZNoz-KY',
+        title: 'Favorite Psycho',
+        artist: 'Qing Madi'
+    },
+    {
+        id: 'Tb4X1BWNO5k',
+        title: 'Mad Over You',
+        artist: 'Runtown'
+    },
+    {
+        id: 'ABy7v4MSKqs',
+        title: 'Fever',
+        artist: 'Wizkid'
+    },
+    {
+        id: 'R4qud199tQk',
+        title: 'KULOSA',
+        artist: 'Oxlade'
+    },
+    {
+        id: 'WH-M6W2778E',
+        title: 'Particula',
+        artist: 'Major Lazer ft. Nasty C, Ice Prince, Patoranking & Jidenna'
+    },
+    {
+        id: 'eVli-tstM5E',
+        title: 'Espresso',
+        artist: 'Sabrina Carpenter'
+    },
+    {
+        id: 'kOkQ4T5WO9E',
+        title: 'This is what you came for',
+        artist: 'Calvin Harris ft. Rihanna'
+    },
+    {
+        id: '2PGa_0A--RI',
+        title: 'Wakikuba (Used to be my favorite UG song)',
+        artist: 'Pia Pounds'
+    },
+    {
+        id: '67MJyqSw6S4',
+        title: 'Sikikukweka (And this one)',
+        artist: 'Daddy Andre'
+    }
+];
 
 let player;
 let currentVideoIndex = 0;
@@ -524,18 +571,18 @@ function stopProgressUpdate() {
 }
 
 
-const CORRECT_DEPARTURE_DATE = '2024-08-31'; 
+const CORRECT_DEPARTURE_DATE = '2024-08-31';
 
 function unlockLetter() {
     const inputDate = document.getElementById('departure-date').value;
     const letterContent = document.getElementById('letter-content');
     const unlockButton = document.querySelector('button[onclick="unlockLetter()"]');
-    
+
     if (!inputDate) {
         alert('Please enter a date first.');
         return;
     }
-    
+
     if (inputDate === CORRECT_DEPARTURE_DATE) {
         // Correct date - show the letter
         letterContent.classList.remove('hidden');
@@ -543,15 +590,15 @@ function unlockLetter() {
         unlockButton.textContent = 'Letter Unlocked! 💕';
         unlockButton.classList.add('bg-green-500', 'hover:bg-green-600');
         unlockButton.classList.remove('from-pink-500', 'to-rose-600', 'hover:from-pink-600', 'hover:to-rose-700');
-        
+
         // Add a sweet animation effect
         letterContent.style.animation = 'fadeInUp 1s ease-out';
-        
+
         // Scroll to the letter content
         setTimeout(() => {
             letterContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 500);
-        
+
     } else {
         // Wrong date - show a hint
         alert('That\'s not quite right. Think about when you left the country... 💭');
